@@ -15,10 +15,10 @@ Use Case
 * Debugging
 * Logging simple output
 * Displaying results
-
+```py
 name = "Julio"
 print(name)
-
+```
 Output
 
 Julio
@@ -28,18 +28,16 @@ Julio
 # len()
 
 Description
-
 Returns the number of items in an object.
-
 Use Case
 
 * Count characters
 * Count list items
 * Validate collections
-
+```py
 names = ["Tom", "Bob", "Sam"]
 print(len(names))
-
+```
 Output
 
 3
@@ -49,17 +47,15 @@ Output
 # type()
 
 Description
-
 Returns the object’s data type.
-
 Use Case
 
 * Debugging
 * Type checking
-
+```py
 age = 35
 print(type(age))
-
+```
 Output
 
 <class 'int'>
@@ -69,33 +65,29 @@ Output
 # input()
 
 Description
-
 Reads user input.
-
 Use Case
 
 * CLI applications
 * User interaction
-
+```py
 name = input("Enter your name: ")
 print(name)
-
+```
 ⸻
 
 # int()
 
 Description
-
 Converts a value into an integer.
-
 Use Case
 
 * Convert form input
 * Convert strings to numbers
-
+```py
 age = int("25")
 print(age)
-
+```
 Output
 
 25
@@ -110,10 +102,10 @@ Use Case
 
 * Currency
 * Calculations
-
+```py
 price = float("10.99")
 print(price)
-
+```
 Output
 
 10.99
@@ -128,10 +120,10 @@ Use Case
 
 * Logging
 * String concatenation
-
+```py
 age = 25
 print("Age: " + str(age))
-
+```
 ⸻
 
 # bool()
@@ -141,10 +133,10 @@ Converts a value to a Boolean.
 Use Case
 
 * Conditional logic
-
+```py
 print(bool(1))
 print(bool(0))
-
+```
 Output
 
 True
@@ -159,10 +151,10 @@ Creates a list.
 Use Case
 
 * Convert iterable objects
-
+```py
 letters = list("Python")
 print(letters)
-
+```
 Output
 
 ['P', 'y', 't', 'h', 'o', 'n']
@@ -176,10 +168,10 @@ Creates an immutable tuple.
 Use Case
 
 * Read-only collections
-
+```py
 numbers = tuple([1, 2, 3])
 print(numbers)
-
+```
 ⸻
 
 # set()
@@ -190,10 +182,10 @@ Use Case
 
 * Remove duplicates
 * Fast lookups
-
+```py
 numbers = set([1, 2, 2, 3])
 print(numbers)
-
+```
 Output
 
 {1,2,3}
@@ -207,10 +199,10 @@ Creates a dictionary.
 Use Case
 
 * Key-value storage
-
+```py
 person = dict(name="Tom", age=30)
 print(person)
-
+```
 ⸻
 
 # range()
@@ -319,9 +311,7 @@ Output
 # min()
 
 Description
-
 Returns the smallest value.
-
 Use Case
 
 * Find minimum
