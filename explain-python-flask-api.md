@@ -1,6 +1,5 @@
+#Basic API Setup with Flask
 Developing APIs in Flask is a common task for backend developers. Flask provides a lightweight and flexible framework for building web applications and APIs. Here’s how you can develop APIs in Flask, explained in simple terms with examples.
-
-Basic API Setup with Flask
 
 At its core, an API built with Flask involves setting up routes that handle HTTP requests and return responses in a format that can be easily consumed by a client, typically JSON.
 
@@ -21,7 +20,7 @@ if __name__ == '__main__':
 ```
 Here, the @app.route decorator defines the endpoint and the HTTP method it accepts. The greet function returns a JSON response containing a greeting message.
 
-Using Flask-RESTful for API Development
+## Using Flask-RESTful for API Development
 
 For more complex APIs, you might consider using Flask-RESTful, an extension that facilitates the creation of REST APIs by providing resource-based routing and request parsing.
 
@@ -44,7 +43,7 @@ if __name__ == '__main__':
 ```
 In this example, Greet is a Resource that defines how to handle GET requests. api.add_resource registers the resource with the desired endpoint.
 
-Handling URL Parameters
+## Handling URL Parameters
 
 APIs often need to capture values from the URL, such as IDs or other parameters.
 
@@ -61,7 +60,7 @@ if __name__ == '__main__':
 ```
 Here, <name> in the route URL is a variable part. The value is passed as a parameter to the greet function.
 
-Request Data and JSON Payloads
+## Request Data and JSON Payloads
 
 APIs often need to process data sent by the client, typically as JSON in the request body.
 
@@ -79,7 +78,7 @@ if __name__ == '__main__':
 ```
 This example shows how to access JSON data sent in a POST request using request.json.
 
-Error Handling
+## Error Handling
 
 Proper error handling is crucial for a good API. Flask allows you to define error handlers for different status codes.
 
@@ -93,14 +92,14 @@ def not_found(error):
 if __name__ == '__main__':
     app.run(debug=True)
 ```
-Using Flask-CORS for Cross-Origin Requests
+## Using Flask-CORS for Cross-Origin Requests
 
 When your API is consumed by clients from different origins, you’ll need to handle Cross-Origin Resource Sharing (CORS). Flask-CORS is an extension that makes it easy.
 
 Installation:
-
+```sh
 pip install -U flask-cors
-
+```
 Example: Enabling CORS for your Flask API.
 ```py
 from flask import Flask
@@ -111,7 +110,8 @@ CORS(app)
 if __name__ == '__main__':
     app.run(debug=True)
 ```
-Summary
+
+## Summary
 
 * Basic API Development: Use Flask’s routing system to define endpoints and return JSON responses.
 * Flask-RESTful: Simplifies API development by providing a resource-based approach.
