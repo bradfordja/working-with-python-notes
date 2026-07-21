@@ -1,4 +1,4 @@
-#Basic API Setup with Flask
+# Basic API Setup with Flask
 Developing APIs in Flask is a common task for backend developers. Flask provides a lightweight and flexible framework for building web applications and APIs. Here’s how you can develop APIs in Flask, explained in simple terms with examples.
 
 At its core, an API built with Flask involves setting up routes that handle HTTP requests and return responses in a format that can be easily consumed by a client, typically JSON.
