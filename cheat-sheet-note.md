@@ -60,7 +60,7 @@ Features:
 * type hints
 * variable arguments (*args, **kwargs)
 
-2. Data Types
+## 2. Data Types
 
 List
 Use when:
@@ -130,7 +130,7 @@ Common interview use:
 * frequency counting
 * grouping
 
-3. Object-Oriented Programming
+## 3. Object-Oriented Programming
 
 Creating Classes
 ```py
@@ -163,7 +163,7 @@ __iter__()
 Interview answer:
 Dunder methods define how custom objects behave with Python operators and built-in functions.
 
-4. File Handling
+## 4. File Handling
 
 Reading Files
 ```py
@@ -188,7 +188,7 @@ Write
 with open("user.json", "w") as file:
     json.dump(data, file)
 ```
-5. Error Handling
+## 5. Error Handling
 
 Try/Except
 ```py
@@ -340,7 +340,7 @@ What Makes Python Unique?
 * decorators
 * generators
 
-10. Libraries & Frameworks
+## 10. Libraries & Frameworks
 
 Django
 Common interview topics:
