@@ -21,11 +21,11 @@ my_function = decorator_name(my_function)
 
 ## 1. @staticmethod
 
-* Description
+Description
 
 Defines a method that belongs to a class but does not receive self or cls.
 
-  * Use Case
+Use Case
 
 Use it when a method is logically related to the class but does not need instance or class data.
 
@@ -62,7 +62,7 @@ Commonly used for:
 * Creating objects from different formats
 
 Sample Code
-
+```py
 class Employee:
     company = "Tech Corp"
     def __init__(self, name: str, salary: float):
@@ -75,7 +75,7 @@ class Employee:
 employee = Employee.from_string("Julio,120000")
 print(employee.name)
 print(employee.salary)
-
+```
 Output
 
 Julio
@@ -103,7 +103,7 @@ Use it for:
 * Controlled access to internal data
 
 Sample Code
-
+```py
 class Rectangle:
     def __init__(self, width: float, height: float):
         self.width = width
@@ -113,7 +113,7 @@ class Rectangle:
         return self.width * self.height
 rectangle = Rectangle(10, 5)
 print(rectangle.area)
-
+```
 Output
 
 50
@@ -139,7 +139,7 @@ Use Case
 Use it when values must be validated before assignment.
 
 Sample Code
-
+```py
 class Product:
     def __init__(self, price: float):
         self.price = price
@@ -154,19 +154,19 @@ class Product:
 product = Product(100)
 product.price = 150
 print(product.price)
-
+```
 Output
 
 150
 
 Invalid assignment:
-
+```py
 product.price = -10
 
 Raises:
 
 ValueError: Price cannot be negative
-
+```
 ⸻
 
 5. @dataclass
@@ -186,7 +186,7 @@ Use Case
 Use it for classes that primarily store data.
 
 Sample Code
-
+```py
 from dataclasses import dataclass
 @dataclass
 class User:
@@ -198,11 +198,11 @@ user = User(
     email="julio@example.com"
 )
 print(user)
-
+```
 Output
-
+```py
 User(name='Julio', email='julio@example.com', active=True)
-
+```
 Without @dataclass, you would need to manually create the constructor and other common methods.
 
 ⸻
@@ -222,7 +222,7 @@ Useful for:
 * Read-only domain models
 
 Sample Code
-
+```py
 from dataclasses import dataclass
 @dataclass(frozen=True)
 class DatabaseConfig:
@@ -233,7 +233,7 @@ config = DatabaseConfig(
     port=5432
 )
 print(config.host)
-
+```
 Trying to modify the object:
 
 config.port = 3306
@@ -255,7 +255,7 @@ Use Case
 Use it to define interfaces or contracts that subclasses must follow.
 
 Sample Code
-
+```py
 from abc import ABC, abstractmethod
 class PaymentService(ABC):
     @abstractmethod
@@ -266,7 +266,7 @@ class CreditCardPayment(PaymentService):
         print(f"Processing credit card payment: ${amount}")
 payment = CreditCardPayment()
 payment.process_payment(100)
-
+```
 Output
 
 Processing credit card payment: $100
@@ -292,7 +292,7 @@ Use Case
 Use it inside almost every custom function decorator.
 
 Sample Code
-
+```py
 from functools import wraps
 def log_call(func):
     @wraps(func)
@@ -307,7 +307,7 @@ def greet(name: str) -> str:
 print(greet("Julio"))
 print(greet.__name__)
 print(greet.__doc__)
-
+```
 Output
 
 Calling function: greet
@@ -337,7 +337,7 @@ Useful for:
 * Configuration retrieval
 
 Sample Code
-
+```py
 from functools import lru_cache
 @lru_cache(maxsize=None)
 def fibonacci(number: int) -> int:
@@ -345,7 +345,7 @@ def fibonacci(number: int) -> int:
         return number
     return fibonacci(number - 1) + fibonacci(number - 2)
 print(fibonacci(40))
-
+```
 Output
 
 102334155
@@ -353,9 +353,9 @@ Output
 Without caching, the recursive function repeatedly calculates the same values.
 
 You can inspect cache usage with:
-
+```py
 print(fibonacci.cache_info())
-
+```
 ⸻
 
 10. @cache
@@ -365,15 +365,15 @@ Description
 Caches every function result without limiting the cache size.
 
 It is similar to:
-
+```py
 @lru_cache(maxsize=None)
-
+```
 Use Case
 
 Useful for pure functions whose results should be reused.
 
 Sample Code
-
+```py
 from functools import cache
 @cache
 def calculate_tax(amount: float, rate: float) -> float:
@@ -381,7 +381,7 @@ def calculate_tax(amount: float, rate: float) -> float:
     return amount * rate
 print(calculate_tax(1000, 0.08))
 print(calculate_tax(1000, 0.08))
-
+```
 Output
 
 Calculating tax...
@@ -403,7 +403,7 @@ Use Case
 Use it when one logical operation requires different implementations for different data types.
 
 Sample Code
-
+```py
 from functools import singledispatch
 @singledispatch
 def display(value):
@@ -417,13 +417,13 @@ def _(value: list):
 display("Python")
 display(100)
 display([1, 2, 3])
-
+```py
 Output
-
+```py
 Default value: Python
 Integer: 100
 List with 3 items: [1, 2, 3]
-
+```
 ⸻
 
 12. @total_ordering
@@ -437,7 +437,7 @@ Use Case
 Useful for objects that need sorting or comparison.
 
 Sample Code
-
+```py
 from functools import total_ordering
 @total_ordering
 class Employee:
@@ -456,7 +456,7 @@ employee1 = Employee("Alice", 90000)
 employee2 = Employee("Bob", 120000)
 print(employee1 < employee2)
 print(employee2 > employee1)
-
+```
 Output
 
 True
@@ -481,7 +481,7 @@ Useful for:
 * Connections
 
 Sample Code
-
+```py
 from contextlib import contextmanager
 @contextmanager
 def managed_resource():
@@ -492,7 +492,7 @@ def managed_resource():
         print("Closing resource")
 with managed_resource() as resource:
     print(resource)
-
+```
 Output
 
 Opening resource
@@ -521,7 +521,7 @@ Useful for:
 * Tracing function execution
 
 Sample Code
-
+```py
 from functools import wraps
 def log_execution(func):
     @wraps(func)
@@ -535,7 +535,7 @@ def log_execution(func):
 def add(a: int, b: int) -> int:
     return a + b
 print(add(4, 6))
-
+```
 Output
 
 Starting add
@@ -560,7 +560,7 @@ Useful for:
 * Monitoring response time
 
 Sample Code
-
+```py
 import time
 from functools import wraps
 def measure_time(func):
@@ -580,7 +580,7 @@ def process_data():
     time.sleep(1)
     return "Completed"
 print(process_data())
-
+```
 ⸻
 
 16. Authentication Decorator
@@ -599,7 +599,7 @@ Commonly used in:
 * User account operations
 
 Sample Code
-
+```py
 from functools import wraps
 def require_authentication(func):
     @wraps(func)
@@ -618,7 +618,7 @@ authenticated_user = {
     "authenticated": True
 }
 print(view_profile(authenticated_user))
-
+```
 Output
 
 Welcome, Julio
@@ -643,7 +643,7 @@ Useful for:
 * API security
 
 Sample Code
-
+```py
 from functools import wraps
 def require_role(required_role: str):
     def decorator(func):
@@ -664,7 +664,7 @@ admin_user = {
     "role": "admin"
 }
 print(delete_user(admin_user, 101))
-
+```
 Output
 
 User 101 deleted by Julio
@@ -687,7 +687,7 @@ Useful for:
 * Unstable remote services
 
 Sample Code
-
+```py
 import time
 from functools import wraps
 def retry(max_attempts: int = 3, delay: float = 1.0):
@@ -712,7 +712,7 @@ def retry(max_attempts: int = 3, delay: float = 1.0):
 def call_service():
     raise ConnectionError("Service unavailable")
 call_service()
-
+```
 Interview Point
 
 In production code, retry only exceptions that are temporary and safe to retry.
@@ -737,7 +737,7 @@ Useful for:
 * Preventing invalid calculations
 
 Sample Code
-
+```
 from functools import wraps
 def require_positive_numbers(func):
     @wraps(func)
@@ -756,7 +756,7 @@ def require_positive_numbers(func):
 def calculate_total(price: float, quantity: int) -> float:
     return price * quantity
 print(calculate_total(25.50, 4))
-
+```
 Output
 
 102.0
@@ -779,7 +779,7 @@ Useful during:
 * Unit-test debugging
 
 Sample Code
-
+```py
 from functools import wraps
 def debug(func):
     @wraps(func)
@@ -795,7 +795,7 @@ def debug(func):
 def multiply(a: int, b: int) -> int:
     return a * b
 multiply(5, 4)
-
+```
 Output
 
 Function: multiply
@@ -808,7 +808,7 @@ Result: 20
 How a Custom Decorator Works
 
 The following decorator converts a function’s result to uppercase.
-
+```py
 from functools import wraps
 def uppercase_result(func):
     @wraps(func)
@@ -820,7 +820,7 @@ def uppercase_result(func):
 def greeting(name: str) -> str:
     return f"Hello, {name}"
 print(greeting("Julio"))
-
+```
 Output
 
 HELLO, JULIO
@@ -844,7 +844,7 @@ original greeting function
 Applying Multiple Decorators
 
 Decorators are applied from bottom to top.
-
+```py
 def decorator_one(func):
     def wrapper():
         return "One(" + func() + ")"
@@ -858,17 +858,17 @@ def decorator_two(func):
 def message():
     return "Hello"
 print(message())
-
+```
 Output
-
+```py
 One(Two(Hello))
-
+```
 This is equivalent to:
-
+```py
 message = decorator_one(
     decorator_two(message)
 )
-
+```
 The decorator closest to the function executes first during wrapping.
 
 ⸻
@@ -880,7 +880,7 @@ A decorator with arguments requires three levels of functions:
 1. Decorator factory
 2. Decorator
 3. Wrapper
-
+```py
 from functools import wraps
 def repeat(times: int):
     def decorator(func):
@@ -898,7 +898,7 @@ def greet(name: str) -> str:
     print(message)
     return message
 greet("Julio")
-
+```
 Output
 
 Hello, Julio
@@ -910,7 +910,7 @@ Hello, Julio
 Class-Based Decorator
 
 A class can also be used as a decorator by implementing __call__.
-
+```py
 class CallCounter:
     def __init__(self, func):
         self.func = func
@@ -927,7 +927,7 @@ def greet(name: str) -> str:
     return f"Hello, {name}"
 print(greet("Julio"))
 print(greet("Alice"))
-
+```
 Output
 
 greet has been called 1 time(s)
@@ -940,7 +940,7 @@ Hello, Alice
 Decorators on Instance Methods
 
 A custom decorator can also wrap methods inside a class.
-
+```py
 from functools import wraps
 def log_method(func):
     @wraps(func)
@@ -960,13 +960,13 @@ class UserService:
         }
 service = UserService()
 print(service.find_user(101))
-
+```
 ⸻
 
 Common Decorator Structure
 
 A normal custom decorator generally follows this pattern:
-
+```py
 from functools import wraps
 def my_decorator(func):
     @wraps(func)
@@ -976,9 +976,9 @@ def my_decorator(func):
         # Code after the original function
         return result
     return wrapper
-
+```
 A decorator that accepts arguments generally follows this pattern:
-
+```py
 from functools import wraps
 def decorator_factory(option):
     def decorator(func):
@@ -988,11 +988,11 @@ def decorator_factory(option):
             return func(*args, **kwargs)
         return wrapper
     return decorator
-
+```
 ⸻
 
 Most Important Decorators for Interviews
-
+```sh
 Decorator	Main Purpose
 @staticmethod	Defines a method without self or cls
 @classmethod	Defines a method that receives the class
@@ -1011,34 +1011,34 @@ Custom authentication decorator	Protects functions from unauthenticated users
 Custom authorization decorator	Enforces roles and permissions
 Custom retry decorator	Retries temporary failures
 Custom validation decorator	Validates function arguments
-
+```
 ⸻
 
 Important Interview Questions
 
-What is a Python decorator?
+### What is a Python decorator?
 
 A decorator is a callable that wraps another function, method, or class to add or modify behavior without changing the original implementation.
 
 ⸻
 
-What does @decorator syntax mean?
+### What does @decorator syntax mean?
 
 This:
-
+```py
 @my_decorator
 def greet():
     return "Hello"
-
+```
 is equivalent to:
-
+```py
 def greet():
     return "Hello"
 greet = my_decorator(greet)
-
+```
 ⸻
 
-Why should custom decorators use functools.wraps?
+### Why should custom decorators use functools.wraps?
 
 functools.wraps preserves the original function’s:
 
@@ -1048,53 +1048,53 @@ functools.wraps preserves the original function’s:
 * Metadata
 
 Example:
-
+```py
 from functools import wraps
 def decorator(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         return func(*args, **kwargs)
     return wrapper
-
+```
 ⸻
 
-What are *args and **kwargs used for?
+### What are *args and **kwargs used for?
 
 They allow a decorator to work with functions that accept different arguments.
-
+```py
 def wrapper(*args, **kwargs):
     return func(*args, **kwargs)
-
+```
 * *args collects positional arguments.
 * **kwargs collects keyword arguments.
 
 ⸻
 
-What is a decorator factory?
+### What is a decorator factory?
 
 A decorator factory is a function that creates and returns a decorator.
 
 It is used when a decorator needs configuration arguments.
-
+```py
 def require_role(role):
     def decorator(func):
         def wrapper(*args, **kwargs):
             return func(*args, **kwargs)
         return wrapper
     return decorator
-
+```
 Usage:
-
+```py
 @require_role("admin")
 def delete_user():
     pass
-
+```
 ⸻
 
-Can decorators modify return values?
+### Can decorators modify return values?
 
 Yes.
-
+```py
 def double_result(func):
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
@@ -1104,41 +1104,41 @@ def double_result(func):
 def get_number():
     return 10
 print(get_number())
-
+```
 Output:
 
 20
 
 ⸻
 
-Can decorators prevent a function from running?
+### Can decorators prevent a function from running?
 
 Yes. Authentication, authorization, and validation decorators commonly prevent execution.
-
+```py
 def require_admin(func):
     def wrapper(user, *args, **kwargs):
         if user.get("role") != "admin":
             raise PermissionError("Admin access required")
         return func(user, *args, **kwargs)
     return wrapper
-
+```
 ⸻
 
-What order are multiple decorators applied?
+### What order are multiple decorators applied?
 
 Multiple decorators are applied from bottom to top.
-
+```py
 @decorator_one
 @decorator_two
 def function():
     pass
-
+```
 Equivalent code:
-
+```py
 function = decorator_one(
     decorator_two(function)
 )
-
+```
 ⸻
 
 Strong Interview Answer
