@@ -1,41 +1,42 @@
+# Common Python Decorators
 Here is the same content in copy-ready Markdown format.
 
-Common Python Decorators — Interview Prep
+## Common Python Decorators — Interview Prep
 
 A decorator is a function or class that modifies the behavior of another function, method, or class without changing its original source code.
 
 Basic Syntax
-
+```py
 @decorator_name
 def my_function():
     pass
-
+```
 This is equivalent to:
-
+```py
 def my_function():
     pass
 my_function = decorator_name(my_function)
-
+```
 ⸻
 
-1. @staticmethod
+## 1. @staticmethod
 
-Description
+* Description
 
 Defines a method that belongs to a class but does not receive self or cls.
 
-Use Case
+  * Use Case
 
 Use it when a method is logically related to the class but does not need instance or class data.
 
 Sample Code
-
+```py
 class Calculator:
     @staticmethod
     def add(a: int, b: int) -> int:
         return a + b
 print(Calculator.add(5, 3))
-
+```
 Output
 
 8
