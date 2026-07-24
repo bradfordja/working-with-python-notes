@@ -47,7 +47,7 @@ A static method behaves like a regular function placed inside a class for organi
 
 ⸻
 
-2. @classmethod
+## 2. @classmethod
 
 Description
 
@@ -87,7 +87,7 @@ A class method receives cls, while a normal instance method receives self.
 
 ⸻
 
-3. @property
+## 3. @property
 
 Description
 
@@ -128,7 +128,7 @@ rectangle.area
 
 ⸻
 
-4. @property with a Setter
+## 4. @property with a Setter
 
 Description
 
@@ -169,7 +169,7 @@ ValueError: Price cannot be negative
 ```
 ⸻
 
-5. @dataclass
+## 5. @dataclass
 
 Description
 
@@ -207,7 +207,7 @@ Without @dataclass, you would need to manually create the constructor and other 
 
 ⸻
 
-6. @dataclass(frozen=True)
+## 6. @dataclass(frozen=True)
 
 Description
 
@@ -242,7 +242,7 @@ Raises an error because the object is immutable.
 
 ⸻
 
-7. @abstractmethod
+## 7. @abstractmethod
 
 Description
 
@@ -275,7 +275,7 @@ You cannot instantiate PaymentService directly because it contains an abstract m
 
 ⸻
 
-8. @functools.wraps
+## 8. @functools.wraps
 
 Description
 
@@ -319,7 +319,7 @@ Without @wraps, the function name would usually appear as wrapper.
 
 ⸻
 
-9. @lru_cache
+## 9. @lru_cache
 
 Description
 
@@ -358,7 +358,7 @@ print(fibonacci.cache_info())
 ```
 ⸻
 
-10. @cache
+## 10. @cache
 
 Description
 
@@ -392,7 +392,7 @@ The calculation message appears only once because the second result comes from t
 
 ⸻
 
-11. @singledispatch
+## 11. @singledispatch
 
 Description
 
@@ -426,7 +426,7 @@ List with 3 items: [1, 2, 3]
 ```
 ⸻
 
-12. @total_ordering
+## 12. @total_ordering
 
 Description
 
@@ -464,7 +464,7 @@ True
 
 ⸻
 
-13. @contextmanager
+## 13. @contextmanager
 
 Description
 
@@ -505,7 +505,7 @@ The code after yield runs even if an exception occurs inside the with block.
 
 Common Custom Decorators
 
-14. Logging Decorator
+## 14. Logging Decorator
 
 Description
 
@@ -544,7 +544,7 @@ Finished add
 
 ⸻
 
-15. Timing Decorator
+## 15. Timing Decorator
 
 Description
 
@@ -583,7 +583,7 @@ print(process_data())
 ```
 ⸻
 
-16. Authentication Decorator
+## 16. Authentication Decorator
 
 Description
 
@@ -625,7 +625,7 @@ Welcome, Julio
 
 ⸻
 
-17. Authorization Decorator with Arguments
+## 17. Authorization Decorator with Arguments
 
 Description
 
@@ -671,7 +671,7 @@ User 101 deleted by Julio
 
 ⸻
 
-18. Retry Decorator
+## 18. Retry Decorator
 
 Description
 
@@ -721,7 +721,7 @@ Avoid automatically retrying all exceptions.
 
 ⸻
 
-19. Validation Decorator
+## 19. Validation Decorator
 
 Description
 
@@ -763,7 +763,7 @@ Output
 
 ⸻
 
-20. Debugging Decorator
+## 20. Debugging Decorator
 
 Description
 
@@ -841,7 +841,7 @@ original greeting function
 
 ⸻
 
-Applying Multiple Decorators
+## Applying Multiple Decorators
 
 Decorators are applied from bottom to top.
 ```py
@@ -873,7 +873,7 @@ The decorator closest to the function executes first during wrapping.
 
 ⸻
 
-Decorator with Arguments
+## Decorator with Arguments
 
 A decorator with arguments requires three levels of functions:
 
@@ -907,7 +907,7 @@ Hello, Julio
 
 ⸻
 
-Class-Based Decorator
+## Class-Based Decorator
 
 A class can also be used as a decorator by implementing __call__.
 ```py
@@ -937,7 +937,7 @@ Hello, Alice
 
 ⸻
 
-Decorators on Instance Methods
+## Decorators on Instance Methods
 
 A custom decorator can also wrap methods inside a class.
 ```py
@@ -963,7 +963,7 @@ print(service.find_user(101))
 ```
 ⸻
 
-Common Decorator Structure
+## Common Decorator Structure
 
 A normal custom decorator generally follows this pattern:
 ```py
@@ -991,7 +991,7 @@ def decorator_factory(option):
 ```
 ⸻
 
-Most Important Decorators for Interviews
+## Most Important Decorators for Interviews
 ```sh
 Decorator	Main Purpose
 @staticmethod	Defines a method without self or cls
@@ -1014,7 +1014,7 @@ Custom validation decorator	Validates function arguments
 ```
 ⸻
 
-Important Interview Questions
+## Important Interview Questions
 
 ### What is a Python decorator?
 
@@ -1038,7 +1038,7 @@ greet = my_decorator(greet)
 ```
 ⸻
 
-### Why should custom decorators use functools.wraps?
+## Why should custom decorators use functools.wraps?
 
 functools.wraps preserves the original function’s:
 
@@ -1058,7 +1058,7 @@ def decorator(func):
 ```
 ⸻
 
-### What are *args and **kwargs used for?
+## What are *args and **kwargs used for?
 
 They allow a decorator to work with functions that accept different arguments.
 ```py
@@ -1070,7 +1070,7 @@ def wrapper(*args, **kwargs):
 
 ⸻
 
-### What is a decorator factory?
+## What is a decorator factory?
 
 A decorator factory is a function that creates and returns a decorator.
 
@@ -1091,7 +1091,7 @@ def delete_user():
 ```
 ⸻
 
-### Can decorators modify return values?
+## Can decorators modify return values?
 
 Yes.
 ```py
@@ -1111,7 +1111,7 @@ Output:
 
 ⸻
 
-### Can decorators prevent a function from running?
+## Can decorators prevent a function from running?
 
 Yes. Authentication, authorization, and validation decorators commonly prevent execution.
 ```py
@@ -1124,7 +1124,7 @@ def require_admin(func):
 ```
 ⸻
 
-### What order are multiple decorators applied?
+## What order are multiple decorators applied?
 
 Multiple decorators are applied from bottom to top.
 ```py
@@ -1141,13 +1141,13 @@ function = decorator_one(
 ```
 ⸻
 
-Strong Interview Answer
+## Strong Interview Answer
 
 A Python decorator is a callable that wraps another function, method, or class to add or modify behavior without changing the original implementation. Common built-in decorators include @staticmethod, @classmethod, @property, @dataclass, @abstractmethod, and @lru_cache. Custom decorators are frequently used for logging, authentication, authorization, validation, retries, caching, and performance measurement. When writing a function decorator, I normally use functools.wraps to preserve the original function’s metadata and use *args and **kwargs so the decorator can support different function signatures.
 
 ⸻
 
-Quick Reference
+## Quick Reference
 
 # Static method
 @staticmethod
